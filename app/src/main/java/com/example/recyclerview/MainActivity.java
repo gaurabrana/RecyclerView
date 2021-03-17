@@ -19,6 +19,7 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
     private final LinkedList<String> mWordList = new LinkedList<>();
+    private final LinkedList<String> mWordListBackup = new LinkedList<>();
     private RecyclerView mRecyclerView;
     private WordListAdapter mAdapter;
 
@@ -42,9 +43,12 @@ public class MainActivity extends AppCompatActivity {
                 mRecyclerView.smoothScrollToPosition(wordListSize);
             }
         });
+
+
         for (int i = 0; i < 20; i++) {
             mWordList.addLast("Word " + i);
         }
+        mWordListBackup.addAll(mWordList);
         mRecyclerView = findViewById(R.id.recyclerview);
 // Create an adapter and supply the data to be displayed.
         mAdapter = new WordListAdapter(this, mWordList);
@@ -70,10 +74,16 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_reset) {
+            mWordList.clear();
+            mWordList.addAll(mWordListBackup);
+            mRecyclerView.getAdapter().notifyDataSetChanged();
             return true;
         }
 
+        //RESET OPTION DONE. NEXT:- Click listener has heavy load on app performance. How can we reduce it?
+
         return super.onOptionsItemSelected(item);
     }
+
 }

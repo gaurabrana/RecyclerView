@@ -1,2 +1,2 @@
-## Task3
-![](app/src/main/res/drawable/task3.gif)
+## Reset List
+![](app/src/main/res/drawable/coding_challenge.gif)

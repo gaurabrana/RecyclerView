@@ -20,7 +20,6 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         this.mWordList = mWordList;
     }
 
-
     @NonNull
     @Override
     public WordListAdapter.WordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
